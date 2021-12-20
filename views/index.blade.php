@@ -23,7 +23,6 @@
         "text" => "Close"
     ]
 ])    
-    {{-- <p id="clist"></p> <br> --}}
     <div id="outTable"></div>
 @endcomponent
 
@@ -38,37 +37,14 @@
             Swal.close();
         });
     }
-
-    function showModal() {
-        showSwal("Yükleniyor...", "info", 5500);
-        let data = new FormData();
-        playbookname = $('#playbookname_field').val();
-        data.append('playbookname',playbookname+".yml");
-        sudopass = $('#sudopass_field').val();
-        data.append('sudopass',sudopass);
-
-        request("{{API("get_client")}}", data, function(response){
-            response = JSON.parse(response).message;
-            response = response.split("\n");
-            let var1 = "";
-            response.forEach(element => {
-                var1 += element+"<br>";
-            });
-            
-            //$('#getClientWindow').find('.modal-body').html(var1);
-            $('#getClientWindow').modal("show");
-            hosts();
-            //$('#clist').html(var1);
-            Swal.close();
-        });
-    }
     
     function modalCloseClick() {
         $("#getClientWindow").modal("hide");
     }
    
-    function hosts() {
+    function showModal() {
         showSwal('{{__("Yükleniyor...")}}','info');
+        $('#getClientWindow').modal("show");
         let data = new FormData();
         playbookname = $('#playbookname_field').val();
         data.append('playbookname',playbookname+".yml");
@@ -83,6 +59,5 @@
             showSwal(error.message, 'error', 3000);
         });
     }
-
 
 </script>
