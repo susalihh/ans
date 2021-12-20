@@ -1,7 +1,6 @@
 <h1>{{ __('Ansible') }}</h1>
 {{ __('Hostname') }}: <b><span id="hostname"></span><br/>
 <br>
-  
     <input type="text" name="playbookName" id="playbookname_field" class="container-sm"><small>.yml</small>
     <br><small>Çalıştırmak istediğiniz ansible-playbook adını giriniz</small>
 
@@ -25,7 +24,6 @@
     ]
 ])    
     {{-- <p id="clist"></p> <br> --}}
-        
     <div id="outTable"></div>
 @endcomponent
 
@@ -59,9 +57,7 @@
             
             //$('#getClientWindow').find('.modal-body').html(var1);
             $('#getClientWindow').modal("show");
-
             hosts();
-
             //$('#clist').html(var1);
             Swal.close();
         });
@@ -69,7 +65,7 @@
     
     function modalCloseClick() {
         $("#getClientWindow").modal("hide");
-    }  
+    }
    
     function hosts() {
         showSwal('{{__("Yükleniyor...")}}','info');
@@ -78,7 +74,6 @@
         data.append('playbookname',playbookname+".yml");
         sudopass = $('#sudopass_field').val();
         data.append('sudopass',sudopass);
-
         
         request(API("list_hosts"), data, function(response) {
             $("#outTable").html(response).find("table").dataTable(dataTablePresets("normal"));
