@@ -1,0 +1,16 @@
+- hosts: [clientlist]
+  tasks:
+    - name: Get hostname
+      script: ~/ansible_lab/getuserlist.sh
+      register: output
+      become: yes
+      become_user: root
+
+    - name: Save output to file
+      lineinfile:
+         path: ~/ansible_lab/test.txt
+         line: "{{ output.stdout }}"
+         state: present
+         backup: no
+      delegate_to: localhost
+

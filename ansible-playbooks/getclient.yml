@@ -1,0 +1,14 @@
+- hosts: [dc]
+  tasks:
+    - name: Get client
+      script: ~/ansible_lab/getclient.sh
+      register: output
+      become: yes
+      become_user: root
+      
+  
+    - name: Save output to file
+      copy:
+        content: "{{ output.stdout }}"
+        dest: "~/ansible_lab/test.txt"
+      delegate_to: localhost
