@@ -55,7 +55,7 @@ class HostnameController
         }
         return view('table', [
             "value" => $fileJson,
-            "title" => ["Host"],
+            "title" => ["Value"],
             "display" => ["name"],
         ]);
     }

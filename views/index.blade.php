@@ -14,7 +14,7 @@
 
 @component("modal-component", [
     "id" => "getClientWindow",
-    "title" => "Hosts",
+    "title" => "",
     "notSized" => true,
     "modalDialogClasses" => "exClass",
     "footer" => [
